@@ -6,8 +6,12 @@ function Form({handleSubmit}) {
     const handleChange = (e) => {
         const source = e.target.id;
         switch(source){
-            case "headline": setForm({...form, headline: e.target.value}); break
-            case "text": setForm({...form, text: e.target.value}); break
+            case "headline": 
+                setForm({...form, headline: e.target.value})
+                break
+            case "text": 
+                setForm({...form, text: e.target.value})
+                break
             default: break
         }
     }

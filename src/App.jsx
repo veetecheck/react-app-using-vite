@@ -4,6 +4,7 @@ import ComponentContainer from "./components/ComponentContainer"
 import SecondComponent from './components/SecondComponent'
 import ThirdComponent from './components/ThirdComponent'
 import Form from './components/Form'
+import sampleData from './sampleData.json'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -27,6 +28,7 @@ function App() {
       text: "Lorem ipsum consectetur adipisicing elit. Porro mollitia."
     }
   ])
+  const [jsonData, setJsonData] = useState(sampleData.sampleData)
   
 
   const handleCount = () => {
@@ -107,6 +109,12 @@ function App() {
       )})}
       <hr />
       <Form handleSubmit={handleSubmit}/>
+      {jsonData.map((item, index)=> {return(
+        <div key={index}>
+          <h2>{item.title}</h2>
+          <p>{item.text}</p>
+        </div>
+      )})}
     </ComponentContainer>
   )
 }
