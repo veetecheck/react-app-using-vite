@@ -3,6 +3,7 @@ import FirstComponent from "./components/FirstComponent"
 import ComponentContainer from "./components/ComponentContainer"
 import SecondComponent from './components/SecondComponent'
 import ThirdComponent from './components/ThirdComponent'
+import Form from './components/Form'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -26,6 +27,7 @@ function App() {
       text: "Lorem ipsum consectetur adipisicing elit. Porro mollitia."
     }
   ])
+  
 
   const handleCount = () => {
     setCount((count) => count + 1)
@@ -34,6 +36,15 @@ function App() {
   const handleDelete = (idToDel) => {
     const temp = [...arr]
     setArr(temp.filter((item) => item.id !== idToDel))
+  }
+
+  const handleSubmit = (form) => {
+    const temp = {
+      id: (arr.length > 0 ? Math.max(...arr.map(item => item.id)) + 1 : 1),
+      headline: form.headline,
+      text: form.text
+    }
+    setArr([...arr, temp])
   }
 
   const renderCount = useRef(0);
@@ -94,6 +105,8 @@ function App() {
           <button className='btn btn-outline-info' onClick={() => handleDelete(item.id)}>Delete item {item.id}</button>
         </div>
       )})}
+      <hr />
+      <Form handleSubmit={handleSubmit}/>
     </ComponentContainer>
   )
 }
